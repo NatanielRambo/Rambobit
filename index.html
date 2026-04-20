@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,23 +10,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* REINICIAR */
-*{margin:0;padding:0;box-sizing:border-box}
 
-/* CORPO */
+/* REINICIAR */
+*{margin:0;padding:0;box-sizing:border-box;}
+
 corpo{
   família de fontes:'Orbitron', sem serifa;
-  fundo: preto;
+  fundo:gradiente-linear(-45deg,#001a00,#003300,#004d40,#001a00);
+  tamanho-de-fundo:400% 400%;
+  animação:gradienteBG 12s suavização infinita;
   cor:#c8ffd8;
-  overflow-x:oculto;
 }
 
-/* ===== MATRIZ ===== */
-#matriz{
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* PARTÍCULAS */
+#partículas-js{
   posição: fixa;
-  inserção:0;
-  índice z:-3;
-  eventos-ponteiro:nenhum;
+  largura: 100%;
+  altura: 100%;
+  Índice z: -2;
 }
 
 /* NAV */
@@ -35,104 +43,91 @@ corpo{
   topo:0;
   exibição:flex;
   justificar-conteúdo:centro;
-  espaço: 12px;
+  espaço:10px;
   preenchimento:15px;
-  fundo:rgba(0,0,0,0.75);
-  fundo-filtro: desfoque(14px);
+  fundo:rgba(0,0,0,0.6);
+  backdrop-filter:blur(15px);
   índice z: 1000;
 }
+
 .nav-button{
-  preenchimento: 10px 16px;
+  preenchimento: 10px 15px;
   cor:#00ff88;
   text-decoration:nenhum;
-  raio-da-borda:18px;
-  transição: 0,3s;
+  raio-da-borda:10px;
 }
 .nav-button:hover{
   fundo:#00ff88;
   cor:preto;
-  box-shadow:0 0 15px #00ff88;
 }
 
 /* CONTÊINER */
 .recipiente{
   largura-máxima:1000px;
-  margem:130px auto 60px;
+  margem:120px automática;
   preenchimento:0 25px;
 }
 
 /* CABEÇALHO */
 .header{text-align:center;margin-bottom:40px;}
-.logotipo{
-  largura: 130px;
-  animação:float 4s ease-in-out infinito;
-  filtro: sombra-projetada(0 0 15px #00ff88);
-}
+.logo{width:130px;animation:float 3s infinite;}
 @keyframes float{50%{transform:translateY(-10px);}}
 
-h1{
-  tamanho-da-fonte:3em;
-  sombra-texto:0 0 20px #00ff88;
-}
+h1{font-size:3em;text-shadow:0 0 20px #00ff88;}
 
-/* SEÇÕES (BORDAS CORRIGIDAS) */
+/* SEÇÕES */
 seção{
   margem-inferior:25px;
-  preenchimento: 28px;
-  raio-da-borda:22px;
-  fundo:rgba(0,0,0,0.55);
+  preenchimento: 25px;
+  raio-da-borda:18px;
+  fundo:rgba(255,255,255,0.05);
   backdrop-filter:blur(12px);
-  borda:1px sólida rgba(0,255,136,0.35);
-  box-shadow:inset 0 0 18px rgba(0,255,136,0.08);
-  overflow:oculto;
+  borda:1px sólida rgba(0,255,136,0.2);
 }
 
-/* ANIMAÃ‡ÃƒO */
+/* ANIMAÇÃO DE ROLAGEM */
 .revelar{
   opacidade: 0;
   transformar:translateY(40px);
-  Transição: 0,9s de facilidade;
+  transição: 0,8s;
 }
 .reveal.active{
   opacidade: 1;
-  transformar:nenhum;
+  transformar:translateY(0);
 }
 
-h2{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #00ff88;}
+h2{text-align:center;margin-bottom:15px;}
 p{line-height:1.6;text-align:justify;}
 
-/* BOTÃƒO */
+/* BOTÃ•ES */
 .botao{
   exibir:bloco em linha;
-  margem-superior:12px;
-  preenchimento: 12px 26px;
-  raio-da-borda:25px;
+  margem-superior:10px;
+  preenchimento: 12px 20px;
+  raio-da-borda:20px;
   fundo:#00ff88;
   cor:preto;
   text-decoration:nenhum;
-  transição: 0,3s;
 }
-.botao:hover{
-  box-shadow:0 0 20px #00ff88;
-}
+.botao:hover{background:#00cc66;}
 
 /* JOGADOR */
-iframe{width:100%;border-radius:14px;margin-top:12px;}
+iframe{width:100%;border-radius:12px;margin-top:10px;}
 
 /* PLATAFORMAS */
 .plataformas{
   exibição:flex;
   justificar-conteúdo:centro;
-  espaço: 12px;
+  espaço:10px;
   flex-wrap:wrap;
-  margem-superior:18px;
+  margem-superior:10px;
 }
 .plataformas a{
-  preenchimento: 10px 16px;
-  raio-da-borda:16px;
-  fundo:rgba(0,255,136,0.15);
-  cor:#c8ffd8;
+  preenchimento: 8px 12px;
+  fundo:rgba(0,255,136,0.1);
+  raio-da-borda:10px;
   text-decoration:nenhum;
+  cor:#c8ffd8;
 }
 .plataformas a:hover{
   fundo:#00ff88;
@@ -143,41 +138,55 @@ iframe{width:100%;border-radius:14px;margin-top:12px;}
 .social-buttons{
   exibição:flex;
   justificar-conteúdo:centro;
-  espaço: 12px;
-  margem-superior:30px;
+  espaço:10px;
+  margem-superior:20px;
 }
 .botao-rede-social{
-  preenchimento:14px;
-  raio-da-borda:50%;
+  preenchimento:10px;
+  raio-da-borda:10px;
   cor: branca;
 }
-.facebook{background:#3b5998}
-.twitter{background:#1DA1F2}
-.telegram{background:#0088cc}
-.youtube{background:#FF0000}
+.facebook{background:#3b5998;}
+.twitter{background:#1DA1F2;}
+.telegram{background:#0088cc;}
+.youtube{background:#FF0000;}
+
+/* ENTRADA */
+entrada{
+  largura: 100%;
+  preenchimento:10px;
+  raio-da-borda:10px;
+  borda:nenhuma;
+}
+botão{
+  margem-superior:10px;
+  preenchimento:10px;
+  borda:nenhuma;
+  raio-da-borda:10px;
+  fundo:#00ff88;
+}
 
 /* RODAPÉ */
 rodapé{
   alinhamento-texto:centrado;
   margem-superior:40px;
   preenchimento: 20px;
-  fundo:rgba(0,0,0,0.7);
+  fundo:rgba(0,0,0,0.4);
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- MATRIX CANVAS -->
-<canvas id="matrix"></canvas>
+<div id="particles-js"></div>
 
 <div class="navigation">
   <a href="#sobre" class="nav-button">Sobre</a>
   <a href="#musicas" class="nav-button">Músicas</a>
   <a href="#exchange" class="nav-button">Exchange</a>
-  <a href="#games" class="nav-button">Jogos</a>
   <a href="#MISSÃƒO" class="nav-button">Missão</a>
- 
+  <a href="#games" class="nav-button">Jogos</a>
 </div>
 
 <div class="container">
@@ -188,11 +197,15 @@ rodapé{
 </div>
 
 <section id="sobre" class="reveal">
+
 <div style="text-align:center;">
   <img src="https://images2.imgbox.com/e8/57/PHReZIxf_o.png" class="logo">
 </div>
-  <h2>obrigado</h2>
-  <p>O Rambobit, com seu tom de brincadeira e irreverência, também chama a atenção pela forma leve e divertida com que se apresenta no universo das criptomoedas. Mesmo parecendo uma grande piada à primeira vista, o projeto se destaca por manter uma identidade descontraída, acompanhada de músicas animadas com o DJ Rambobit, criando um clima festivo e envolvente. A proposta é unir humor, entretenimento e criatividade, mostrando que o espaço criptográfico também pode ser divertido e acessível. O Rambobit segue apostando nessa energia positiva e musical, reforçando sua presença como um token que não se leva tão sério, mas que sabe como animar e engajar sua comunidade de forma única..</p>
+
+<h2>obrigado</h2>
+
+<p>SOBRE
+O Rambobit, com seu tom de brincadeira e irreverência, também chama a atenção pela forma leve e divertida com que se apresenta no universo das criptomoedas. Mesmo parecendo uma grande piada à primeira vista, o projeto se destaca por manter uma identidade descontraída, acompanhada de músicas animadas com o DJ Rambobit, criando um clima festivo e envolvente. A proposta é unir humor, entretenimento e criatividade, mostrando que o espaço criptográfico também pode ser divertido e acessível. O Rambobit segue apostando nessa energia positiva e musical, reforçando sua apresentação como um token que não se leva tão sério, mas que sabe como animar e engajar sua comunidade de forma única.</p>
 </section>
 
 <section id="musicas" class="reveal">
@@ -201,10 +214,43 @@ rodapé{
   <img src="https://images2.imgbox.com/8d/15/YaGjoCwV_o.png" class="logo">
 </div>
 
-  <h2>ðŸŽµ DJ Rambobit</h2>
-  <iframe src="https://open.spotify.com/embed/artist/7CIVh3rUMHnMdHwpxH6xRg" height="352"></iframe>
+<h2>ðŸŽµ DJ Rambobit</h2>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/7CIVh3rUMHnMdHwpxH6xRg?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+  <div class="platforms">
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
 
+<!-- Fonte futurista -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome para Ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.plataformas {
+  exibição:flex;
+  justificar-conteúdo:centro;
+  espaço: 20px;
+  flex-wrap:wrap;
+  margem-superior:20px;
+}
+.plataformas a {
+  exibição:flex;
+  alinhar-itens:centro;
+  espaço:8px;
+  preenchimento: 10px 15px;
+  raio-da-borda:12px;
+  fundo:rgba(0,255,100,0.1);
+  cor:#c8ffd8;
+  text-decoration:nenhum;
+  peso da fonte:negrito;
+  transição: todos os 0,3s de facilidade;
+}
+.platforms a:hover {
+  fundo:#00ff88;
+  cor:#000;
+  box-shadow:0 0 15px #00ff88;
+}
 </style>
 </head>
 <body>
@@ -220,7 +266,7 @@ rodapé{
 
 <section id="exchange" class="reveal">
 <h2>Câmbio</h2>
-<h2><a href="https://www.nofinex.com/market/pair/RBT-USDT.html" class="botao">Comprar RBT</a><h2>
+<a href="https://www.nofinex.com/market/pair/RBT-USDT.html" class="botao">Comprar RBT</a>
 </section>
 
 </section>
@@ -245,78 +291,141 @@ rodapé{
        style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
       <img src="https://images2.imgbox.com/a7/11/mm5ZwZnZ_o.png" alt="COINCODEX" style="width:120px;">
     </a>
-  
+  </div>
 </div>
-
 </section>
 
 <section id="exchange" class="reveal">
-  <h2>Câmbio</h2>
-  <h2><a href="https://www.nofinex.com/market/pair/RBT-USDT.html" class="botao">Comprar RBT</a><h2>
-</section>
+<h2>Câmbio</h2>
+<a href="https://www.nofinex.com/market/pair/RBT-USDT.html" class="botao">Comprar RBT</a>
+  </div>
+<!-- SCRIPTS -->
 
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</div>
+
+<script>
+// PARTÍCULAS
+tsParticles.load("particles-js",{
+partículas:{
+número:{valor:60},
+cor:{valor:"#00ff88"},
+links:{enable:true,color:"#00ff88",opacity:0.2},
+mover:{ativar:verdadeiro,velocidade:1},
+tamanho:{valor:2}
+}
+});
+
+// ROLAR
+janela.adicionarOuvinteDeEvento("scroll",()=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add("active");
+}
+});
+});
+
+// PREÇO
+seja preço=0,0025;
+setInterval(()=>{
+preço += (Math.random()-0.5)*0.0002;
+document.getElementById("price").innerText=price.toFixed(6);
+},1500);
+
+// GRÃ FICO
+const ctx=document.getElementById('chart');
+seja data=[1,2,3,2,4,3,5];
+novo gráfico(ctx,{
+tipo:'linha',
+dados:{
+rótulos:[1,2,3,4,5,6,7],
+conjuntos de dados:[{
+rótulo:'RBT',
+dados:dados,
+borderColor:'#00ff88',
+backgroundColor:'rgba(0,255,136,0.1)'
+}]
+}
+});
+
+// CÓPIA
+função copiarEndereço(){
+let input=document.getElementById("wallet");
+input.select();
+documento.execComando("copiar");
+alerta("Copiado!");
+}
+</script>
+
+<title>Preço Rambobit</title>
+
+<!-- Script do CoinPaprika -->
+<script type="text/javascript" src="https://unpkg.com/@coinpaprika/widget-currency/dist/widget.min.js"></script>
+
+<style>
+  corpo {
+    fundo: #0d0d0d;
+    cor: branca;
+    família de fontes: 'Orbitron', Arial, sem serifa;
+    alinhamento do texto: centralizado;
+    margem: 0;
+    preenchimento: 40px;
+  }
+  h2 {
+    sombra-do-texto: 0 0 15px #00ff88;
+  }
+</style>
+</head>
+<body>
+
+<h2>ðŸ'Ž Rambobit (RBT)</h2>
+
+<!-- Widget CoinPaprika -->
+<div class="coinpaprika-currency-widget cp-widget__night-mode"
+     data-primary-currency="usd"
+     moeda-dados="rbt-rambobit"
+     data-personalizada="false"
+     data-inicial-dados="0"
+     data-fim-da-data="0"
+     data-modules='["market_details","chart"]'
+     data-update-active="true">
+</div>
+
+</section>
 <section id="games" class="reveal">
-  <h2>ðŸŽ® Jogos</h2>
- <h2> <a href="https://rambodama.netlify.app/" class="botao">Dama</a><h2>
- <h2> <a href="https://batalhanavalrambobit.netlify.app/" class="botao">Naval</a><h2>
+<h2>ðŸŽ® Jogos</h2>
+<a href="https://rambodama.netlify.app/" class="botao">Dama</a>
+<a href="https://batalhanavalrambobit.netlify.app/" class="botao">Naval</a>
 </section>
 
 <section id="MISSÃƒO" class="reveal">
-  <h2>Srta.</h2>
-  <p>O Rambobit tem como missão criar um ecossistema de entretenimento no universo das criptomoedas, integrando música, identidade criativa e engajamento comunitário por meio da tecnologia blockchain. O projeto utiliza blockchain como base para oferecer transparência, rastreabilidade e segurança em suas interações, permitindo que a comunidade acompanhe e participe de forma clara e confiável da evolução do token. Com uma proposta focada em diversão, criatividade e interação, o Rambobit busca fornecer uma experiência diferenciada no mercado criptográfico, unindo humor, música animada e a identidade do DJ Rambobit para fortalecer uma comunidade ativa e engajada..</p>
+<h2>MISSÃO</h2>
+
+<p>MISSÃƒO
+O Rambobit tem como missão criar um ecossistema de entretenimento no universo das criptomoedas, integrando música, identidade criativa e engajamento comunitário por meio da tecnologia blockchain. O projeto utiliza blockchain como base para oferecer transparência, rastreabilidade e segurança em suas interações, permitindo que a comunidade acompanhe e participe de forma clara e confiável da evolução do token. Com uma proposta focada em diversão, criatividade e interação, o Rambobit busca fornecer uma experiência diferenciada no mercado criptográfico, unindo humor, música animada e a identidade do DJ Rambobit para fortalecer uma comunidade ativa e engajada.</p>
 </section>
 
 <section id="TOKEN" class="reveal">
-  <h2>TOKEN</h2>
-<h2>Nome: Rambobit<h2>
-<h2>Símbolo: RBT<h2>
-<h2>Rede: Polígono.<h2>
+<h2>TOKEN</h2>
+
+<h3>TOKEN<h3>
+<h3>Nome: Rambobit<h3>
+<h3>Símbolo: RBT<h3>
+<h3>Rede: Polígono.<h3>
 </section>
 
+</section>
 <div class="social-buttons">
-  <a href="https://www.facebook.com/rambobit.2025?rdid=t0UdOlaFYht7C7B8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1673rusbt4%2F#" class="botao-rede-social facebook"><i class="fab fa-facebook"></i></a>
-  <a href="https://x.com/Natanie31401527?t=aXiilRYdDhjAsYS9gksLMg&s=09" class="botao-rede-social twitter"><i class="fab fa-twitter"></i></a>
-  <a href="https://t.me/+VDoEXD21ZCoxMDYx" class="botao-rede-social telegram"><i class="fab fa-telegram"></i></a>
-  <a href="https://youtube.com/@rambobit3581?si=tUQcIGCPYy5O-Q_Y" class="botao-rede-social youtube"><i class="fab fa-youtube"></i></a>
+<a href="https://www.facebook.com/rambobit.2025?rdid=t0UdOlaFYht7C7B8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1673rusbt4%2F#" class="botao-rede-social facebook"><i class="fa-brands fa-facebook"></i></a>
+<a href="https://x.com/Natanie31401527?t=aXiilRYdDhjAsYS9gksLMg&s=09" class="botao-rede-social twitter"><i class="fa-brands fa-twitter"></i></a>
+<a href="https://t.me/+VDoEXD21ZCoxMDYx" class="botao-rede-social telegram"><i class="fa-brands fa-telegram"></i></a>
+<a href="https://youtube.com/@rambobit3581?si=tUQcIGCPYy5O-Q_Y" class="botao-rede-social youtube"><i class="fa-brands fa-youtube"></i></a>
 </div>
 
 <footer>© 2026 Rambobit</footer>
 
 </div>
-
-<!-- MATRIX SCRIPT CLÁSSICO -->
-<script>
-
-const c=document.getElementById("matrix"),ctx=c.getContext("2d");
-função redimensionar(){c.largura=largurainterna;c.altura=alturainterna}
-redimensionar();adicionarOuvinteDeEvento("redimensionar",redimensionar);
-
-const chars="ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒ ãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒ ãƒŽ0123456789";
-const letras=chars.split("");
-const size=16,cols=Math.floor(c.width/size),drops=Array(cols).fill(1);
-
-função desenhar(){
-  ctx.fillStyle="rgba(0,0,0,0.15)";
-  ctx.fillRect(0,0,c.width,c.height);
-  ctx.fillStyle="#00ff00";
-  ctx.font=size+"px monospace";
-  for(let i=0;i<drops.length;i++){
-    const t=letras[Math.floor(Math.random()*letras.length)];
-    ctx.fillText(t,i*size,drops[i]*size);
-    if(drops[i]*size>c.height&&Math.random()>0.975)drops[i]=0;
-    gotas[i]++;
-  }
-}
-setInterval(draw,50);
-</script>
-
-<script>
-addEventListener("scroll",()=>{
-  document.querySelectorAll(".reveal").forEach(e=>{
-    if(e.getBoundingClientRect().top<innerHeight-100)e.classList.add("active");
-  });
-});
-</script>
-
 </body>
+
 </html>
