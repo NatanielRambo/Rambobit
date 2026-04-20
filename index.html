@@ -287,20 +287,6 @@ rodapé{
 <!-- MATRIX SCRIPT CLÁSSICO -->
 <script>
 
-// Ajuste automático para celular
-seja matrixSpeed ​​= 50;
-let matrixFontSize = 16;
-
-if(window.innerWidth < 768){
-  velocidade da matriz = 80; // mais leve no celular
-  matrixFontSize = 14;
-}
-const size = matrixFontSize;
-...
-setInterval(draw, matrixSpeed);
-``
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 const c=document.getElementById("matrix"),ctx=c.getContext("2d");
 função redimensionar(){c.largura=largurainterna;c.altura=alturainterna}
 redimensionar();adicionarOuvinteDeEvento("redimensionar",redimensionar);
