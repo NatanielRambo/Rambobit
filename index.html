@@ -225,25 +225,43 @@ footer{
 </div>
 </section>
 
+<!-- SEÇÃO EXCHANGE CORRIGIDA -->
 <section id="exchange" class="reveal">
-<h2>Exchange</h2>
-<a href="https://www.nofinex.com/market/pair/RBT-USDT.html" class="botao">Comprar RBT</a>
-</head>
-<body>
+    <h2>💎 Negociar RAMBOBIT (RBT)</h2>
+<img src="https://images2.imgbox.com/c1/f7/jQJb1NCn_o.png" class="logo">
+    <p style="text-align: center; margin-bottom: 20px;">Escolha sua plataforma preferida para adquirir RBT com segurança.</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        
+        <!-- CARD UNISWAP -->
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 20px; border: 1px solid #ff007a;">
+            <img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" style="width: 50px; margin-bottom: 10px;">
+            <h3>Uniswap V2</h3>
+            <p style="font-size: 0.9em; margin-bottom: 15px;">Rede Polygon (MATIC)</p>
+            <a href="https://app.uniswap.org/explore/tokens/polygon/0x42f3de49b8a0be54cb13c1849cbc8cf0bd943b65" 
+               target="_blank" class="botao" style="background: #ff007a; color: white; box-shadow: 0 0 15px #ff007a;">
+               Fazer Swap Agora
+            </a>
+        </div>
 
-<h2>💎 Rambobit (RBT)</h2>
+        <!-- CARD NOFINEX -->
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 20px; border: 1px solid #00ff88;">
+            <img src="https://www.nofinex.com/assets/fxb-stacked.png" style="width: 50px; margin-bottom: 10px; border-radius: 50%;">
+            <h3>Nofinex</h3>
+            <p style="font-size: 0.9em; margin-bottom: 15px;">Par RBT/USDT</p>
+            <a href="https://www.nofinex.com/market/pair/RBT-USDT.html" 
+               target="_blank" class="botao">
+               Comprar na Nofinex
+            </a>
+        </div>
 
-<!-- Widget CoinPaprika -->
-<div class="coinpaprika-currency-widget cp-widget__night-mode"
-     data-primary-currency="usd"
-     data-currency="rbt-rambobit"
-     data-custom-date="false"
-     data-start-date="0"
-     data-end-date="0"
-     data-modules='["market_details","chart"]'
-     data-update-active="true">
+    </div>
 
-</style>
+    <!-- TERMINAL COM O SEU JSON -->
+    <div class="terminal" style="margin-top: 30px;">
+        <div style="color: #666; margin-bottom: 5px;"></div>
+        <pre id="json-output" style="font-size: 0.8em;"></pre>
+    </div>
 </section>
 
 <section id="PARCEIROS" class="reveal">
@@ -304,6 +322,7 @@ footer{
 <h3>Nome: Rambobit<h3>
 <h3>Símbolo: RBT<h3>
 <h3>Rede: Polygon.<h3>
+<h3>0x42f3de49b8a0be54cb13c1849cbc8cf0bd943b65<h3>
 </section>
 
 <div class="social-buttons">
